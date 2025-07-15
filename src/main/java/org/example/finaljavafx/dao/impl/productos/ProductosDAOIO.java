@@ -8,6 +8,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.example.finaljavafx.model.Productos.fromString;
+
 public class ProductosDAOIO extends DatosIO implements ProductosDAO {
 
     private File productosDB;
@@ -28,11 +30,10 @@ public class ProductosDAOIO extends DatosIO implements ProductosDAO {
 
     @Override
     public void guardarProducto(Producto producto) {
-        String productoString = producto.getNombre() + "," + producto.getDescripcion() + "," + producto.getPorcentaje() + "\n";
-        FileWriter fw;
+        String productoString = producto.toString() + "\n";
         BufferedWriter bw;
         try {
-            fw = new FileWriter(productosDB, true);
+            FileWriter fw = new FileWriter(productosDB, true);
             bw = new BufferedWriter(fw);
             bw.write(productoString);
             bw.close();
@@ -62,7 +63,7 @@ public class ProductosDAOIO extends DatosIO implements ProductosDAO {
     }
 
     protected Producto transformString(String linea) {
-        String[] partes = linea.split(",");
-        return new Producto(partes[0], partes[1], Float.parseFloat(partes[2]));
+        String[] partes = linea.split(":");
+        return new Producto(Double.parseDouble(partes[0]), fromString(partes[1]));
     }
 }
