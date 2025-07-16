@@ -1,4 +1,4 @@
-package org.example.finaljavafx.dao.impl.productos;
+package org.example.finaljavafx.dao.impl.List;
 
 import org.example.finaljavafx.dao.ProductosDAO;
 import org.example.finaljavafx.model.Producto;

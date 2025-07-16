@@ -1,4 +1,4 @@
-package org.example.finaljavafx.dao.impl.usuarios;
+package org.example.finaljavafx.dao.impl.List;
 
 import org.example.finaljavafx.dao.UsuariosDAO;
 import org.example.finaljavafx.model.Usuario;

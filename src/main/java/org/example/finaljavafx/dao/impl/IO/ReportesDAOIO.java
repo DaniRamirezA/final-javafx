@@ -1,4 +1,4 @@
-package org.example.finaljavafx.dao.impl.reportes;
+package org.example.finaljavafx.dao.impl.IO;
 
 import org.example.finaljavafx.dao.ReportesDAO;
 import org.example.finaljavafx.dao.impl.DatosIO;
