@@ -16,13 +16,8 @@ public class VentaService {
         this.dao = new ProductoDAO();
     }
 
-    public List<Producto> cargarProductos(String ruta) {
-        try {
-            return dao.obtenerTodos(ruta);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return List.of();
-        }
+    public List<Producto> obtenerProductos() {
+        return dao.obtenerProductos();
     }
 
     public int calcularSubtotal(List<Producto> productos, List<Integer> cantidadesVendidas) {
@@ -57,7 +52,7 @@ public class VentaService {
 
             if (cantidadVendida > 0) {
                 p.setCantidadDisponible(p.getCantidadDisponible() - cantidadVendida);
-                registrarEnInventario(p, cantidadVendida); // este ya lo tienes
+                registrarEnInventario(p, cantidadVendida);
             }
         }
 

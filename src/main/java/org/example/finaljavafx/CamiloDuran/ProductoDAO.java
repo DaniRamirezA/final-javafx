@@ -7,26 +7,53 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductoDAO {
-    public static List<Producto> obtenerTodos(String rutaArchivo) throws IOException {
+public class ProductoDAO implements ProductosDAO{
+    private File productosDB;
+
+    public ProductoDAO() {
+        this.productosDB = new File("src/main/resources/productos.txt");
+    }
+
+    @Override
+    public List<Producto> obtenerProductos() {
         List<Producto> productos = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+        try {
+            FileReader fr = new FileReader(productosDB);
+            BufferedReader br = new BufferedReader(fr);
             String linea;
             while ((linea = br.readLine()) != null) {
-                String[] partes = linea.split(",");
-                if (partes.length == 4) {
-                    String codigo = partes[0];
-                    String nombre = partes[1];
-                    int precio = Integer.parseInt(partes[2]);
-                    int cantidad = Integer.parseInt(partes[3]);
-                    productos.add(new Producto(codigo, nombre, precio, cantidad));
+                Producto producto = transformarProductoString(linea);
+                if (producto != null) {
+                    productos.add(producto);
                 }
             }
-        } catch (IOException | NumberFormatException e) {
-            throw new IOException("Error al cargar productos: " + e.getMessage(), e);
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return productos;
     }
+
+    private Producto transformarProductoString(String linea) {
+        String[] partes = linea.split(",");
+        if (partes.length == 4) {
+            try {
+                String codigo = partes[0];
+                String nombre = partes[1];
+                int precio = Integer.parseInt(partes[2]);
+                int cantidad = Integer.parseInt(partes[3]);
+                return new Producto(codigo, nombre, precio, cantidad);
+            } catch (NumberFormatException e) {
+                System.err.println("Error al parsear número en línea: " + linea);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void guardarProducto(Producto producto){
+    }
+
     public static void guardarTodos(String rutaArchivo, List<Producto> productos) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
             for (Producto p : productos) {

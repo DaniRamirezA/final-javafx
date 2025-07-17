@@ -23,7 +23,7 @@ public class VentaController {
 
     @FXML
     public void initialize() {
-        productos.addAll(service.cargarProductos("src/main/resources/productos.txt"));
+        productos.addAll(service.obtenerProductos());
         cargarProductosEnVista();
     }
 
