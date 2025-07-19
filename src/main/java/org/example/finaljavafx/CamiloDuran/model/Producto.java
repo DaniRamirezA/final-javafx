@@ -1,4 +1,4 @@
-package org.example.finaljavafx.CamiloDuran;
+package org.example.finaljavafx.CamiloDuran.model;
 
 public class Producto {
     private String codigo;

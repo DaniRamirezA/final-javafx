@@ -1,7 +1,7 @@
-package org.example.finaljavafx.CamiloDuran;
+package org.example.finaljavafx.CamiloDuran.services;
 
-import com.example.restaurantefx.dao.InventarioDAO;
 import com.example.restaurantefx.dao.ProductoDAO;
+import com.example.restaurantefx.dao.VentaDAO;
 import com.example.restaurantefx.model.Producto;
 
 import java.io.*;
@@ -13,7 +13,7 @@ public class VentaService {
     private final ProductoDAO dao;
 
     public VentaService() {
-        this.dao = new ProductoDAO();
+        this.dao = new ProductoDAO("src/main/resources/productos.txt");
     }
 
     public List<Producto> obtenerProductos() {
@@ -28,7 +28,7 @@ public class VentaService {
         return total;
     }
 
-    private final InventarioDAO inventarioDAO = new InventarioDAO("src/main/resources/inventario.txt");
+    private final VentaDAO inventarioDAO = new VentaDAO("src/main/resources/ventas.txt");
 
     public boolean procesarVenta(List<Producto> productos, List<Integer> cantidades) {
         boolean exito = true;
@@ -65,7 +65,7 @@ public class VentaService {
         return true;
     }
     private void registrarEnInventario(Producto producto, int cantidadVendida) {
-        File archivo = new File("src/main/resources/inventario.txt");
+        File archivo = new File("src/main/resources/ventas.txt");
         Map<String, int[]> inventario = new HashMap<>();
 
         // Leer datos existentes

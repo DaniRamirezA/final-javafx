@@ -1,14 +1,14 @@
-package org.example.finaljavafx.CamiloDuran;
+package org.example.finaljavafx.CamiloDuran.dao;
 
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class InventarioDAO {
+public class VentaDAO implements VentasDAO{
     private final File archivo;
 
-    public InventarioDAO(String ruta) {
+    public VentaDAO(String ruta) {
         this.archivo = new File(ruta);
         try {
             if (!archivo.exists()) archivo.createNewFile();
@@ -16,7 +16,7 @@ public class InventarioDAO {
             e.printStackTrace();
         }
     }
-
+    @Override
     public Map<String, int[]> cargarInventario() throws IOException {
         Map<String, int[]> inventario = new HashMap<>();
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
@@ -31,7 +31,7 @@ public class InventarioDAO {
         }
         return inventario;
     }
-
+    @Override
     public void actualizarInventario(Map<String, int[]> inventario) throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
             for (Map.Entry<String, int[]> entry : inventario.entrySet()) {

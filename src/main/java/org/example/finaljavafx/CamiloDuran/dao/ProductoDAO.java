@@ -1,4 +1,4 @@
-package org.example.finaljavafx.CamiloDuran;
+package org.example.finaljavafx.CamiloDuran.dao;
 
 
 import com.example.restaurantefx.model.Producto;
@@ -8,10 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductoDAO implements ProductosDAO{
-    private File productosDB;
+    private final File productosDB;
 
-    public ProductoDAO() {
-        this.productosDB = new File("src/main/resources/productos.txt");
+    public ProductoDAO(String ruta) {
+        this.productosDB = new File(ruta);
+        try {
+            if (!productosDB.exists()) {
+                productosDB.createNewFile();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
