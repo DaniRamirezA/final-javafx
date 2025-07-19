@@ -43,9 +43,13 @@ public class AuthController {
         if (usuarioAutenticado != null) {
             mostrarAlerta("Éxito", "Bienvenido, " + usuarioAutenticado.getUsername(), Alert.AlertType.INFORMATION);
             try {
-                App.mostrarAdminPanel(); // Cambia de vista si es correcto
+                if ("admin".equals(usuarioAutenticado.getRol())) {
+                    App.mostrarAdminPanel();
+                } else {
+                    App.mostrarVentaPanel(); // Nuevo método que implementaremos luego
+                }
             } catch (Exception e) {
-                mostrarAlerta("Error", "No se pudo abrir el panel de administración", Alert.AlertType.ERROR);
+                mostrarAlerta("Error", "No se pudo cargar el panel correspondiente", Alert.AlertType.ERROR);
                 e.printStackTrace();
             }
         } else {

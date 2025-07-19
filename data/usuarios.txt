@@ -1,3 +1,4 @@
 admin,admin123,admin
 trabajador1,clave1,trabajador
 trabajador2,clave2,trabajador
+trabajador3,clave3,trabajador

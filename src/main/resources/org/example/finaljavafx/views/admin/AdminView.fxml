@@ -6,19 +6,14 @@
 <BorderPane xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.example.finaljavafx.ADaniela.controllers.admin.AdminController">
-    <top>
-        <MenuBar>
-            <Menu text="Archivo">
-                <MenuItem text="Cerrar Sesión" onAction="#logout"/>
-            </Menu>
-        </MenuBar>
-    </top>
-
+    <!-- Eliminamos el MenuBar superior -->
     <left>
         <VBox spacing="10" style="-fx-padding: 10;">
             <Button text="Productos" onAction="#mostrarProductos"/>
             <Button text="Trabajadores" onAction="#mostrarTrabajadores"/>
             <Button text="Reportes" onAction="#mostrarReportes"/>
+            <Region prefHeight="20"/>
+            <Button text="Cerrar Sesión" onAction="#logout"/>
         </VBox>
     </left>
 

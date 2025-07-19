@@ -1,4 +1,4 @@
-package org.example.finaljavafx.CamiloDuran.dao;
+package org.example.finaljavafx.ADaniela.dao;
 
 public interface ReportesDAO {
  void guardarReporte();

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.finaljavafx.ADaniela.controllers.admin.ProductoDialogController">
+    <content>
+        <GridPane hgap="10" vgap="10">
+            <Label text="Código:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="codigoField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="nombreField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Precio:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="precioField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <Label text="Cantidad:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <TextField fx:id="cantidadField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        </GridPane>
+    </content>
+</DialogPane>

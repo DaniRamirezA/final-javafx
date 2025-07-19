@@ -34,6 +34,11 @@ public class App extends Application {
         primaryStage.setScene(new Scene(root, 1000, 700));
     }
 
+    public static void mostrarVentaPanel() throws IOException {
+        Parent root = loadFXML("/org/example/finaljavafx/views/trabajador/venta_view");
+        primaryStage.setScene(new Scene(root, 1000, 700));
+    }
+
     public static Parent loadFXML(String fxmlPath) throws IOException {
         return FXMLLoader.load(Objects.requireNonNull(
                 App.class.getResource(fxmlPath + ".fxml")

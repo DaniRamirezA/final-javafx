@@ -9,21 +9,32 @@
       fx:controller="org.example.finaljavafx.ADaniela.controllers.admin.ProductosController"
       spacing="10" style="-fx-padding: 10;">
 
+    <HBox spacing="10" style="-fx-padding: 0 0 10 0;">
+        <Button text="Agregar Producto" onAction="#agregarProducto"/>
+        <Button text="Editar Producto" onAction="#editarProducto"/>
+        <Button text="Eliminar Producto" onAction="#eliminarProducto"/>
+    </HBox>
+
     <TableView fx:id="tablaProductos">
         <columns>
-            <TableColumn text="Nombre">
+            <TableColumn fx:id="columnaCodigo" text="Código" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="codigo"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="columnaNombre" text="Nombre" prefWidth="150">
                 <cellValueFactory>
                     <PropertyValueFactory property="nombre"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="Precio">
+            <TableColumn fx:id="columnaPrecio" text="Precio" prefWidth="100">
                 <cellValueFactory>
                     <PropertyValueFactory property="precio"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="Categoría">
+            <TableColumn fx:id="columnaCantidad" text="Disponibles" prefWidth="100">
                 <cellValueFactory>
-                    <PropertyValueFactory property="categoria"/>
+                    <PropertyValueFactory property="cantidadDisponible"/>
                 </cellValueFactory>
             </TableColumn>
         </columns>

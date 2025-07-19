@@ -1,6 +1,6 @@
-package org.example.finaljavafx.CamiloDuran.dao;
+package org.example.finaljavafx.ADaniela.dao;
 
-import com.example.restaurantefx.model.Producto;
+import org.example.finaljavafx.ADaniela.models.Producto;
 
 import java.util.List;
 

@@ -1,4 +1,6 @@
-package org.example.finaljavafx.CamiloDuran.dao;
+package org.example.finaljavafx.ADaniela.dao.impl.IO;
+
+import org.example.finaljavafx.ADaniela.dao.ReportesDAO;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,7 +9,7 @@ import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ReporteDAO implements ReportesDAO{
+public class ReporteDAOIO implements ReportesDAO {
     @Override
     public void guardarReporte() {
         String fecha = new SimpleDateFormat("yyyy-MM-dd").format(new Date());

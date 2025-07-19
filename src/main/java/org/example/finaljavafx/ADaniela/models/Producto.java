@@ -3,28 +3,23 @@ package org.example.finaljavafx.ADaniela.models;
 import java.io.Serializable;
 
 public class Producto implements Serializable {
+    private String codigo;
     private String nombre;
-    private double precio;
-    private String categoria;
-    private boolean activo;
-    private int codigo;
+    private int precio;
+    private int cantidadDisponible;
 
-    public Producto(String nombre, double precio, String categoria, int codigo) {
+    public Producto(String codigo, String nombre, int precio, int cantidadDisponible) {
+        this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
-        this.categoria = categoria;
-        this.codigo = codigo;
-        this.activo = true;
+        this.cantidadDisponible = cantidadDisponible;
     }
-
-    // Getters y Setters
+    public String getCodigo() { return codigo; }
+    public void setCodigo(String codigo) { this.codigo = codigo; }
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
-    public double getPrecio() { return precio; }
-    public void setPrecio(double precio) { this.precio = precio; }
-    public String getCategoria() { return categoria; }
-    public void setCategoria(String categoria) { this.categoria = categoria; }
-    public boolean isActivo() { return activo; }
-    public void setActivo(boolean activo) { this.activo = activo; }
-    public int getCodigo() { return codigo; }
+    public int getPrecio() { return precio; }
+    public void setPrecio(int precio) { this.precio = precio; }
+    public int getCantidadDisponible() { return cantidadDisponible; }
+    public void setCantidadDisponible(int cantidad) { this.cantidadDisponible = cantidad; }
 }
