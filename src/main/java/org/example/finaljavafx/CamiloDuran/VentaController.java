@@ -1,3 +1,4 @@
+/*
 package org.example.finaljavafx.CamiloDuran;
 
 import com.example.restaurantefx.model.Producto;
@@ -100,4 +101,4 @@ public class VentaController {
         alert.showAndWait();
     }
 
-}
+}*/

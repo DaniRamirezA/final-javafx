@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.finaljavafx.ADaniela.controllers.admin.ProductosController"
+      spacing="10" style="-fx-padding: 10;">
+
+    <TableView fx:id="tablaProductos">
+        <columns>
+            <TableColumn text="Nombre">
+                <cellValueFactory>
+                    <PropertyValueFactory property="nombre"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Precio">
+                <cellValueFactory>
+                    <PropertyValueFactory property="precio"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Categoría">
+                <cellValueFactory>
+                    <PropertyValueFactory property="categoria"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+</VBox>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.finaljavafx.ADaniela.controllers.admin.ReportesController"
+      spacing="10" style="-fx-padding: 10;">
+
+    <TableView fx:id="tablaReportes">
+        <columns>
+            <TableColumn text="ID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="id"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Fecha">
+                <cellValueFactory>
+                    <PropertyValueFactory property="fecha"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Total">
+                <cellValueFactory>
+                    <PropertyValueFactory property="total"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+</VBox>

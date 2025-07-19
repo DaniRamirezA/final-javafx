@@ -1,3 +1,4 @@
+/*
 package org.example.finaljavafx.CamiloDuran;
 
 import com.example.restaurantefx.dao.InventarioDAO;
@@ -105,3 +106,4 @@ public class VentaService {
 }
 
 
+*/
