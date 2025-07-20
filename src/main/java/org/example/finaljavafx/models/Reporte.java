@@ -1,0 +1,86 @@
+package org.example.finaljavafx.models;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Reporte {
+    private final LocalDate fecha;
+    private final List<ItemReporte> ventas;
+    private String usuario;
+
+    public static class ItemReporte {
+        private final String nombreProducto;
+        private final int cantidad;
+        private final double precioUnitario;
+        private final double total;
+        private final String usuario;
+
+        public ItemReporte(String nombreProducto, int cantidad, double precioUnitario, double total, String usuario) {
+            this.nombreProducto = nombreProducto;
+            this.cantidad = cantidad;
+            this.precioUnitario = precioUnitario;
+            this.total = total;
+            this.usuario = usuario;
+        }
+
+        public String getNombreProducto() { return nombreProducto; }
+        public int getCantidad() { return cantidad; }
+        public double getPrecioUnitario() { return precioUnitario; }
+        public double getTotal() { return total; }
+        public String getUsuario() { return usuario; }
+    }
+
+    public Reporte(LocalDate fecha, String usuario) {
+        this.fecha = fecha;
+        this.usuario = usuario;
+        this.ventas = new ArrayList<>();
+    }
+
+    public void agregarVenta(String nombreProducto, int cantidad, double precioUnitario, double total, String usuario) {
+        for (ItemReporte item : ventas) {
+            if (item.getNombreProducto().equals(nombreProducto) && item.getUsuario().equals(usuario)) {
+                ItemReporte consolidado = new ItemReporte(
+                        nombreProducto,
+                        item.getCantidad() + cantidad,
+                        precioUnitario,
+                        item.getTotal() + total,
+                        usuario
+                );
+                ventas.remove(item);
+                ventas.add(consolidado);
+                return;
+            }
+        }
+
+        ventas.add(new ItemReporte(nombreProducto, cantidad, precioUnitario, total, usuario));
+    }
+
+    public void agregarVenta(Producto producto, int cantidad, String usuario) {
+        agregarVenta(
+                producto.getNombre(),
+                cantidad,
+                producto.getPrecio(),
+                cantidad * producto.getPrecio(),
+                usuario
+        );
+    }
+
+    public String getUsuario() { return usuario; }
+    public void setUsuario(String usuario) { this.usuario = usuario; }
+    public int getTotalProductos() { return ventas.stream().mapToInt(ItemReporte::getCantidad).sum(); }
+    public double getTotalVentas() { return ventas.stream().mapToDouble(ItemReporte::getTotal).sum(); }
+    public LocalDate getFecha() { return fecha; }
+    public List<ItemReporte> getVentas() { return new ArrayList<>(ventas); }
+    public boolean tieneVentas() { return !ventas.isEmpty(); }
+
+    @Override
+    public String toString() {
+        return "Reporte{" +
+                "fecha=" + fecha +
+                ", usuario=" + usuario +
+                ", totalProductos=" + getTotalProductos() +
+                ", totalVentas=" + getTotalVentas() +
+                '}';
+    }
+}

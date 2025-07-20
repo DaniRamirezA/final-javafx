@@ -1,0 +1,5 @@
+Producto,Cantidad,PrecioUnitario,Total,Usuario,Timestamp
+cafe,1,2000,2000,trabajador1,040607
+te,1,1000,1000,trabajador1,040607
+pan,1,2000,2000,trabajador1,040607
+almojabana,1,500,500,trabajador1,040607

@@ -6,43 +6,34 @@
 
 <VBox xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.example.finaljavafx.ADaniela.controllers.admin.ProductosController"
+      fx:controller="org.example.finaljavafx.controllers.admin.ProductosController"
       spacing="15" style="-fx-padding: 20;">
 
-    <!-- Barra de botones (sin cambios) -->
     <HBox spacing="15" alignment="CENTER_LEFT">
         <Button text="Agregar" onAction="#agregarProducto"
                 style="-fx-background-color: #e47911; -fx-text-fill: white; -fx-min-width: 120; -fx-min-height: 35;"/>
-
         <Button text="Editar" onAction="#editarProducto"
                 style="-fx-background-color: #2a7fcf; -fx-text-fill: white; -fx-min-width: 120; -fx-min-height: 35;"/>
-
         <Button text="Eliminar" onAction="#eliminarProducto"
                 style="-fx-background-color: #d16a6a; -fx-text-fill: white; -fx-min-width: 120; -fx-min-height: 35;"/>
     </HBox>
-
-    <!-- Tabla de productos (versión segura) -->
     <TableView fx:id="tablaProductos" style="-fx-font-size: 14;">
         <columns>
-            <!-- Añadido fx:id explícito -->
             <TableColumn fx:id="columnaCodigo" text="Código" prefWidth="120" style="-fx-alignment: CENTER;">
                 <cellValueFactory>
                     <PropertyValueFactory property="codigo"/>
                 </cellValueFactory>
             </TableColumn>
-
             <TableColumn fx:id="columnaNombre" text="Nombre" prefWidth="200">
                 <cellValueFactory>
                     <PropertyValueFactory property="nombre"/>
                 </cellValueFactory>
             </TableColumn>
-
             <TableColumn fx:id="columnaPrecio" text="Precio" prefWidth="100" style="-fx-alignment: CENTER_RIGHT;">
                 <cellValueFactory>
                     <PropertyValueFactory property="precio"/>
                 </cellValueFactory>
             </TableColumn>
-
             <TableColumn fx:id="columnaCantidad" text="Disponibles" prefWidth="100" style="-fx-alignment: CENTER;">
                 <cellValueFactory>
                     <PropertyValueFactory property="cantidadDisponible"/>

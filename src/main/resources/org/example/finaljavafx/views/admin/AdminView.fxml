@@ -5,32 +5,21 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.finaljavafx.ADaniela.controllers.admin.AdminController"
-            style="-fx-background-color: #f0f0f0;"> <!-- Fondo suave -->
-
-    <!-- 🌟 Barra lateral izquierda (estilo moderno) -->
+            fx:controller="org.example.finaljavafx.controllers.admin.AdminController"
+            style="-fx-background-color: #f0f0f0;">
     <left>
         <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #37475a;">
-            <!-- Botones principales -->
             <Button text="Productos" onAction="#mostrarProductos"
                     style="-fx-background-color: #007eb9; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 150; -fx-min-height: 40;"/>
-
             <Button text="Trabajadores" onAction="#mostrarTrabajadores"
                     style="-fx-background-color: #007eb9; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 150; -fx-min-height: 40;"/>
-
             <Button text="Reportes" onAction="#mostrarReportes"
                     style="-fx-background-color: #007eb9; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 150; -fx-min-height: 40;"/>
-
-            <!-- Espaciador -->
             <Region VBox.vgrow="ALWAYS"/>
-
-            <!-- Botón de cierre -->
             <Button text="Cerrar Sesión" onAction="#logout"
                     style="-fx-background-color: #d16a6a; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 150; -fx-min-height: 40;"/>
         </VBox>
     </left>
-
-    <!-- Contenido principal -->
     <center>
         <StackPane fx:id="contenidoPanel" style="-fx-padding: 20;"/>
     </center>
