@@ -1,4 +1,20 @@
-001,cafe,2000,7
-002,te,1000,4
-003,pan,2000,4
-004,latte,8000,25
+001,Café americano,5000,30
+002,Café Capuccino,6000,55
+003,Café Espresso,3000,30
+004,Café Irlandés,8000,25
+005,Café Hawaiano,8000,25
+006,Café con Leche,3000,66
+007,Te,2500,88
+008,Pan de Queso,5000,50
+009,Pandebono,1000,100
+010,Palito de Queso,2500,30
+011,Almojábana,1000,47
+012,Pan de Yuca,1000,26
+013,Buñuelo,1000,39
+014,Empanada,3000,44
+015,Pan Integral,12000,18
+016,Papa con Relleno,5000,15
+017,Croissant,7000,22
+018,Chocoramo,4500,33
+019,Pan Artesanal,15000,19
+020,Sandwich,12000,13
