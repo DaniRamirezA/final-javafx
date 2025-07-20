@@ -41,10 +41,5 @@ public class UsuariosService {
         return usuarios.stream().anyMatch(u -> u.getUsername().equals(username));
     }
 
-    public Usuario autenticar(String username, String password) {
-        return usuarios.stream()
-                .filter(u -> u.getUsername().equals(username) && u.getPassword().equals(password))
-                .findFirst()
-                .orElse(null);
-    }
+
 }

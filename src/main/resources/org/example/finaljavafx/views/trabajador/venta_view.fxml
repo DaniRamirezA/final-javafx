@@ -14,40 +14,26 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.example.finaljavafx.controllers.trabajador.VentaController"
             prefHeight="400.0" prefWidth="600.0">
-
-    <!-- 🎀 PARTE INFERIOR CON BOTONES MÁS GRANDES Y ESPACIADOS 🎀 -->
     <bottom>
         <HBox alignment="CENTER" spacing="20"
               style="-fx-background-color: #f5f5f5; -fx-padding: 15;">
-
-            <!-- 1️⃣ SUBTOTAL -->
             <HBox alignment="CENTER_LEFT" spacing="5">
                 <Label text="Subtotal:" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
                 <TextField fx:id="subtotalField" editable="false" prefWidth="120"
                            style="-fx-font-size: 14; -fx-alignment: CENTER_RIGHT;"/>
             </HBox>
-
-            <!-- 2️⃣ BOTÓN VENDER (MÁS GRANDE) -->
             <Button text="Vender" onAction="#venderProductos"
                     style="-fx-background-color: #e47911; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14;"
-                    minWidth="120" minHeight="35"/> <!-- ¡Altura y anchura aumentadas! -->
-
-            <!-- 3️⃣ BOTÓN REPORTE (MÁS GRANDE) -->
+                    minWidth="120" minHeight="35"/>
             <Button text="Enviar Reporte" onAction="#enviarReporte"
                     style="-fx-background-color: #2a7fcf; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14;"
-                    minWidth="140" minHeight="35"/> <!-- ¡Más ancho para el texto! -->
-
-            <!-- ESPACIADOR -->
+                    minWidth="140" minHeight="35"/>
             <Region HBox.hgrow="ALWAYS"/>
-
-            <!-- 4️⃣ BOTÓN CERRAR SESIÓN (MÁS GRANDE) -->
             <Button text="Cerrar Sesión" onAction="#cerrarSesion"
                     style="-fx-background-color: #d16a6a; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14;"
                     minWidth="140" minHeight="35"/>
         </HBox>
     </bottom>
-
-    <!-- 🌟 CENTRO CON LA TABLA DE PRODUCTOS -->
     <center>
         <GridPane fx:id="gridProductos" hgap="15" vgap="15"
                   style="-fx-padding: 20;">

@@ -39,7 +39,7 @@ public class AuthController {
 
         try {
             Usuario usuarioAutenticado = authService.autenticar(usuario, contrasena);
-            App.setUsuarioActual(usuarioAutenticado); // Establecer usuario en la sesión
+            App.setUsuarioActual(usuarioAutenticado);
 
             mostrarAlerta("Éxito", "Bienvenido, " + usuarioAutenticado.getUsername(), Alert.AlertType.INFORMATION);
 
