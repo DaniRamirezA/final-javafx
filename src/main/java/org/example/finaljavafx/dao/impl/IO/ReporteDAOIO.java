@@ -31,10 +31,8 @@ public class ReporteDAOIO implements ReportesDAO {
 
     @Override
     public void guardarReporte(Reporte reporte) throws IOException {
-        // Genera un timestamp único (formato: HHmmss)
         String timestamp = LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("HHmmss"));
-
         String usuario = reporte.getUsuario();
         String nombreArchivo = String.format("%sreporte_%s_%s_%s.txt",
                 directorioReportes,
@@ -64,15 +62,6 @@ public class ReporteDAOIO implements ReportesDAO {
                 .filter(Objects::nonNull)
                 .sorted(Comparator.comparing(Reporte::getFecha).reversed())
                 .collect(Collectors.toList());
-    }
-
-    @Override
-    public Reporte obtenerReportePorFecha(LocalDate fecha) throws IOException {
-        return Files.list(Paths.get(directorioReportes))
-                .filter(path -> path.getFileName().toString().contains("reporte_" + fecha))
-                .findFirst()
-                .map(this::leerReporteDesdeArchivo)
-                .orElse(null);
     }
 
     private boolean esArchivoDeReporte(Path path) {

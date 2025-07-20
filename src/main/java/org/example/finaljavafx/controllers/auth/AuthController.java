@@ -24,7 +24,6 @@ public class AuthController {
 
     @FXML
     public void initialize() {
-        // ENTER activa login desde campo de contraseña
         campoContrasena.setOnAction(event -> login());
     }
 

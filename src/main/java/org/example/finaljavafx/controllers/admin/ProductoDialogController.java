@@ -28,7 +28,6 @@ public class ProductoDialogController {
     public String getCodigo() {
         return codigoField.getText();
     }
-
     public String getNombre() {
         return nombreField.getText();
     }

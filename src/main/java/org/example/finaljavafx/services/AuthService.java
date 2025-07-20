@@ -9,12 +9,6 @@ import java.util.List;
 public class AuthService {
     private final UsuariosDAO usuariosDAO = new UsuariosDAOIO();
 
-    public boolean validarCredenciales(String username, String password) {
-        List<Usuario> usuarios = usuariosDAO.obtenerUsuarios();
-        return usuarios.stream()
-                .anyMatch(u -> u.getUsername().equals(username) && u.getPassword().equals(password));
-    }
-
     public Usuario autenticar(String usuario, String contrasena) {
         List<Usuario> usuarios = usuariosDAO.obtenerUsuarios();
         return usuarios.stream()

@@ -46,16 +46,6 @@ public class App extends Application {
         primaryStage.setScene(new Scene(root, 1000, 700));
     }
 
-    public static void mostrarReportesPanel() throws IOException {
-        if (usuarioActual != null && usuarioActual.getRol().equals("admin")) {
-            Parent root = loadFXML("/org/example/finaljavafx/views/admin/ReportesView");
-            primaryStage.setScene(new Scene(root, 1200, 800));
-        } else {
-            mostrarError("Acceso denegado", "Solo administradores pueden ver reportes");
-            cargarLogin();
-        }
-    }
-
     public static Parent loadFXML(String fxmlPath) throws IOException {
         FXMLLoader loader = new FXMLLoader(App.class.getResource(fxmlPath + ".fxml"));
         return loader.load();

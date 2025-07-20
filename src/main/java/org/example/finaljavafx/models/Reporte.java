@@ -56,16 +56,6 @@ public class Reporte {
         ventas.add(new ItemReporte(nombreProducto, cantidad, precioUnitario, total, usuario));
     }
 
-    public void agregarVenta(Producto producto, int cantidad, String usuario) {
-        agregarVenta(
-                producto.getNombre(),
-                cantidad,
-                producto.getPrecio(),
-                cantidad * producto.getPrecio(),
-                usuario
-        );
-    }
-
     public String getUsuario() { return usuario; }
     public void setUsuario(String usuario) { this.usuario = usuario; }
     public int getTotalProductos() { return ventas.stream().mapToInt(ItemReporte::getCantidad).sum(); }

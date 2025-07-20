@@ -29,19 +29,6 @@ public class UsuariosDAOIO implements UsuariosDAO {
     }
 
     @Override
-    public void guardarUsuario(Usuario usuario) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ARCHIVO_USUARIOS, true))) {
-            writer.write(String.join(",",
-                    usuario.getUsername(),
-                    usuario.getPassword(),
-                    usuario.getRol()));
-            writer.newLine();
-        } catch (IOException e) {
-            System.err.println("Error al guardar el usuario: " + e.getMessage());
-        }
-    }
-
-    @Override
     public void guardarUsuarios(List<Usuario> usuarios) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ARCHIVO_USUARIOS))) {
             for (Usuario usuario : usuarios) {

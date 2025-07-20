@@ -37,22 +37,6 @@ public class UsuariosService {
         usuariosDAO.guardarUsuarios(usuarios);
     }
 
-    public void actualizarUsuario(Usuario usuarioActualizado) {
-        if (usuarioActualizado.getUsername().equals("admin")) {
-            throw new IllegalStateException("No se puede modificar el administrador principal");
-        }
-
-        for (int i = 0; i < usuarios.size(); i++) {
-            Usuario actual = usuarios.get(i);
-            if (actual.getUsername().equals(usuarioActualizado.getUsername())) {
-                usuarios.set(i, usuarioActualizado);
-                break;
-            }
-        }
-
-        usuariosDAO.guardarUsuarios(usuarios);
-    }
-
     public boolean existeUsuario(String username) {
         return usuarios.stream().anyMatch(u -> u.getUsername().equals(username));
     }

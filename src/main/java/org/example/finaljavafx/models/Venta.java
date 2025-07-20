@@ -9,13 +9,6 @@ public class Venta {
     private List<ItemVenta> items;
     private double total;
 
-    public Venta(int id, List<ItemVenta> items) {
-        this.id = id;
-        this.fecha = LocalDateTime.now();
-        this.items = items;
-        this.total = calcularTotal();
-    }
-
     private double calcularTotal() {
         return items.stream()
                 .mapToDouble(ItemVenta::getSubtotal)

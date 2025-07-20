@@ -13,7 +13,6 @@ public class AdminController {
 
     @FXML
     public void initialize() {
-        // Cargar vista por defecto al iniciar
         mostrarProductos();
     }
 

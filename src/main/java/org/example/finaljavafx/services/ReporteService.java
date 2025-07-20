@@ -52,13 +52,6 @@ public class ReporteService {
         return reporteDAO.obtenerTodosReportes();
     }
 
-    public Reporte obtenerReportePorFechaYUsuario(LocalDate fecha, String usuario) throws IOException {
-        return reporteDAO.obtenerTodosReportes().stream()
-                .filter(r -> r.getFecha().equals(fecha) && r.getUsuario().equals(usuario))
-                .findFirst()
-                .orElse(null);
-    }
-
     public boolean tieneVentasDiarias() {
         return reporteDiario != null && reporteDiario.tieneVentas();
     }
@@ -67,8 +60,4 @@ public class ReporteService {
         return reporteDiario;
     }
 
-    public Reporte reiniciarReporteDiario() {
-        this.reporteDiario = new Reporte(LocalDate.now(), App.getUsuarioActual().getUsername());
-        return this.reporteDiario;
-    }
 }

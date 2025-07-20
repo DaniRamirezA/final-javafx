@@ -8,5 +8,4 @@ import java.util.List;
 public interface ReportesDAO {
  void guardarReporte(Reporte reporte) throws IOException;
  List<Reporte> obtenerTodosReportes() throws IOException;
- Reporte obtenerReportePorFecha(LocalDate fecha) throws IOException;
 }
