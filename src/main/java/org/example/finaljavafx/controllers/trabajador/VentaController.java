@@ -43,12 +43,8 @@ public class VentaController {
         try {
             gridProductos.getChildren().clear();
             camposVenta.clear();
-            gridProductos.add(new Label("Código"), 0, 0);
-            gridProductos.add(new Label("Nombre"), 1, 0);
-            gridProductos.add(new Label("Disponible"), 2, 0);
-            gridProductos.add(new Label("Cantidad"), 3, 0);
 
-            int fila = 1;
+            int fila = 0;
             for (Producto p : productos) {
                 gridProductos.add(new Label(p.getCodigo()), 0, fila);
                 gridProductos.add(new Label(p.getNombre()), 1, fila);
