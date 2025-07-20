@@ -1,5 +1,12 @@
 package org.example.finaljavafx.ADaniela.dao;
 
+import org.example.finaljavafx.ADaniela.models.Reporte;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
+
 public interface ReportesDAO {
- void guardarReporte();
+ void guardarReporte(Reporte reporte) throws IOException;
+ List<Reporte> obtenerTodosReportes() throws IOException;
+ Reporte obtenerReportePorFecha(LocalDate fecha) throws IOException;
 }

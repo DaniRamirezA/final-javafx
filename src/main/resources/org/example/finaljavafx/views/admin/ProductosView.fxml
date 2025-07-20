@@ -7,32 +7,43 @@
 <VBox xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="org.example.finaljavafx.ADaniela.controllers.admin.ProductosController"
-      spacing="10" style="-fx-padding: 10;">
+      spacing="15" style="-fx-padding: 20;">
 
-    <HBox spacing="10" style="-fx-padding: 0 0 10 0;">
-        <Button text="Agregar Producto" onAction="#agregarProducto"/>
-        <Button text="Editar Producto" onAction="#editarProducto"/>
-        <Button text="Eliminar Producto" onAction="#eliminarProducto"/>
+    <!-- Barra de botones (sin cambios) -->
+    <HBox spacing="15" alignment="CENTER_LEFT">
+        <Button text="Agregar" onAction="#agregarProducto"
+                style="-fx-background-color: #e47911; -fx-text-fill: white; -fx-min-width: 120; -fx-min-height: 35;"/>
+
+        <Button text="Editar" onAction="#editarProducto"
+                style="-fx-background-color: #2a7fcf; -fx-text-fill: white; -fx-min-width: 120; -fx-min-height: 35;"/>
+
+        <Button text="Eliminar" onAction="#eliminarProducto"
+                style="-fx-background-color: #d16a6a; -fx-text-fill: white; -fx-min-width: 120; -fx-min-height: 35;"/>
     </HBox>
 
-    <TableView fx:id="tablaProductos">
+    <!-- Tabla de productos (versión segura) -->
+    <TableView fx:id="tablaProductos" style="-fx-font-size: 14;">
         <columns>
-            <TableColumn fx:id="columnaCodigo" text="Código" prefWidth="100">
+            <!-- Añadido fx:id explícito -->
+            <TableColumn fx:id="columnaCodigo" text="Código" prefWidth="120" style="-fx-alignment: CENTER;">
                 <cellValueFactory>
                     <PropertyValueFactory property="codigo"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="columnaNombre" text="Nombre" prefWidth="150">
+
+            <TableColumn fx:id="columnaNombre" text="Nombre" prefWidth="200">
                 <cellValueFactory>
                     <PropertyValueFactory property="nombre"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="columnaPrecio" text="Precio" prefWidth="100">
+
+            <TableColumn fx:id="columnaPrecio" text="Precio" prefWidth="100" style="-fx-alignment: CENTER_RIGHT;">
                 <cellValueFactory>
                     <PropertyValueFactory property="precio"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="columnaCantidad" text="Disponibles" prefWidth="100">
+
+            <TableColumn fx:id="columnaCantidad" text="Disponibles" prefWidth="100" style="-fx-alignment: CENTER;">
                 <cellValueFactory>
                     <PropertyValueFactory property="cantidadDisponible"/>
                 </cellValueFactory>

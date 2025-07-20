@@ -10,45 +10,34 @@
 <VBox xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="org.example.finaljavafx.ADaniela.controllers.admin.UsuariosController"
-      spacing="10" style="-fx-padding: 10;">
+      spacing="15" style="-fx-padding: 20;">
 
-    <HBox spacing="10" style="-fx-padding: 10;">
-        <Label text="Usuario:"/>
-        <TextField fx:id="campoUsuario" promptText="Nombre de usuario" style="-fx-pref-width: 150;"/>
+    <!-- Formulario -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Usuario:" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="campoUsuario" promptText="Nombre" style="-fx-pref-width: 150;"/>
 
-        <Label text="Contraseña:"/>
+        <Label text="Contraseña:" style="-fx-font-weight: bold; -fx-padding: 0 0 0 10;"/>
         <PasswordField fx:id="campoContrasena" promptText="Contraseña" style="-fx-pref-width: 150;"/>
 
-        <Label text="Rol:"/>
-        <ComboBox fx:id="comboRol" promptText="Seleccione rol" style="-fx-pref-width: 150;">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="admin"/>
-                    <String fx:value="trabajador"/>
-                </FXCollections>
-            </items>
-        </ComboBox>
+        <Label text="Rol:" style="-fx-font-weight: bold; -fx-padding: 0 0 0 10;"/>
+        <ComboBox fx:id="comboRol" promptText="Seleccione" style="-fx-pref-width: 150;"/>
 
-        <Button text="Agregar" onAction="#agregarTrabajador" style="-fx-pref-width: 100;"/>
-        <Button text="Eliminar" onAction="#eliminarTrabajador" style="-fx-pref-width: 100;"/>
+        <Button text="Agregar" onAction="#agregarTrabajador"
+                style="-fx-background-color: #2a7fcf; -fx-text-fill: white; -fx-min-width: 100; -fx-margin: 0 0 0 10;"/>
+
+        <Button text="Eliminar" onAction="#eliminarTrabajador"
+                style="-fx-background-color: #d16a6a; -fx-text-fill: white; -fx-min-width: 100;"/>
     </HBox>
 
-    <TableView fx:id="tablaTrabajadores" style="-fx-pref-height: 300;">
+    <!-- Tabla -->
+    <TableView fx:id="tablaTrabajadores" style="-fx-font-size: 14;">
         <columns>
-            <TableColumn text="Usuario" prefWidth="150">
-                <cellValueFactory>
-                    <PropertyValueFactory property="username"/>
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn text="Contraseña" prefWidth="150">
-                <cellValueFactory>
-                    <PropertyValueFactory property="password"/> <!-- Nueva columna -->
-                </cellValueFactory>
+            <TableColumn text="Usuario" prefWidth="200">
+                <cellValueFactory><PropertyValueFactory property="username"/></cellValueFactory>
             </TableColumn>
             <TableColumn text="Rol" prefWidth="150">
-                <cellValueFactory>
-                    <PropertyValueFactory property="rol"/>
-                </cellValueFactory>
+                <cellValueFactory><PropertyValueFactory property="rol"/></cellValueFactory>
             </TableColumn>
         </columns>
     </TableView>

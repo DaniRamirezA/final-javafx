@@ -1,5 +1,6 @@
 package org.example.finaljavafx.ADaniela.controllers.trabajador;
 
+import javafx.scene.control.ButtonType;
 import org.example.finaljavafx.ADaniela.App;
 import org.example.finaljavafx.ADaniela.models.Producto;
 import org.example.finaljavafx.ADaniela.services.ReporteService;
@@ -11,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -99,8 +102,12 @@ public class VentaController {
             boolean exito = ventaService.procesarVenta(productos, cantidades);
 
             if (exito) {
+                // Actualizar reporte diario con los productos vendidos
+                reporteService.agregarVentaDiaria(productos, cantidades);
+
                 mostrarAlerta("Éxito", "Venta registrada correctamente", Alert.AlertType.INFORMATION);
                 subtotalField.setText("0");
+
                 // Actualizar vista
                 productos.clear();
                 productos.addAll(ventaService.obtenerProductos());
@@ -116,17 +123,57 @@ public class VentaController {
     @FXML
     private void enviarReporte() {
         try {
-            reporteService.guardarReporteDiario();
-            mostrarAlerta("Éxito", "Reporte diario generado correctamente", Alert.AlertType.INFORMATION);
+            if (reporteService.tieneVentasDiarias()) {
+                // Obtener el momento exacto del reporte
+                String timestamp = LocalDateTime.now()
+                        .format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+                // Mensaje mejorado con detalles
+                String mensaje = String.format(
+                        "✅ Reporte guardado\n" +
+                                "⏰ Hora: %s\n" +
+                                "👤 Usuario: %s\n" +
+                                "📦 Productos: %d\n" +
+                                "💰 Total: $%,.0f",
+                        timestamp,
+                        App.getUsuarioActual().getUsername(),
+                        reporteService.getReporteDiario().getTotalProductos(),
+                        reporteService.getReporteDiario().getTotalVentas()
+                );
+
+                // Guardar el reporte con timestamp único
+                reporteService.guardarReporteDiario();
+
+                mostrarAlerta("Éxito", mensaje, Alert.AlertType.INFORMATION);
+
+                // Opcional: Reiniciar el reporte diario en memoria
+                //reporteService.reiniciarReporteDiario();
+            } else {
+                mostrarAlerta("Información",
+                        "No hay ventas registradas para generar el reporte",
+                        Alert.AlertType.INFORMATION);
+            }
         } catch (Exception e) {
-            mostrarAlerta("Error", "No se pudo generar el reporte: " + e.getMessage(), Alert.AlertType.ERROR);
+            mostrarAlerta("Error",
+                    "Error al generar el reporte:\n" + e.getMessage(),
+                    Alert.AlertType.ERROR);
+            e.printStackTrace(); // Para depuración
         }
     }
 
     @FXML
     private void cerrarSesion() {
         try {
-            App.Login(); // Asume que App.Login() maneja la navegación al login
+            // Verificar si hay ventas no reportadas antes de cerrar sesión
+            if (reporteService.tieneVentasDiarias()) {
+                boolean confirmar = mostrarConfirmacion("Ventas pendientes",
+                        "Tiene ventas no reportadas. ¿Desea generar el reporte antes de salir?");
+
+                if (confirmar) {
+                    reporteService.guardarReporteDiario();
+                }
+            }
+            App.cargarLogin();
         } catch (IOException e) {
             mostrarAlerta("Error", "No se pudo cerrar la sesión", Alert.AlertType.ERROR);
             e.printStackTrace();
@@ -139,5 +186,13 @@ public class VentaController {
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
         alert.showAndWait();
+    }
+
+    private boolean mostrarConfirmacion(String titulo, String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        return alert.showAndWait().filter(response -> response == ButtonType.OK).isPresent();
     }
 }

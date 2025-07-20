@@ -12,6 +12,12 @@ public class AdminController {
     private StackPane contenidoPanel;
 
     @FXML
+    public void initialize() {
+        // Cargar vista por defecto al iniciar
+        mostrarProductos();
+    }
+
+    @FXML
     public void mostrarProductos() {
         cargarVista("/org/example/finaljavafx/views/admin/ProductosView");
     }
@@ -29,7 +35,12 @@ public class AdminController {
     @FXML
     private void logout() {
         try {
-            App.Login();
+            // Verificar si hay reportes pendientes antes de cerrar sesión
+            if (App.getUsuarioActual() != null && App.getUsuarioActual().getRol().equals("admin")) {
+                App.cargarLogin();
+            } else {
+                mostrarAlerta("Error", "No se pudo cerrar la sesión", AlertType.ERROR);
+            }
         } catch (IOException e) {
             mostrarAlerta("Error", "No se pudo cargar la vista de login", AlertType.ERROR);
             e.printStackTrace();

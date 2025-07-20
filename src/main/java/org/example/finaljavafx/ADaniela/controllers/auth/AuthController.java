@@ -30,30 +30,28 @@ public class AuthController {
 
     @FXML
     private void login() {
-        String usuario = campoUsuario.getText();
-        String contrasena = campoContrasena.getText();
+        String usuario = campoUsuario.getText().trim();
+        String contrasena = campoContrasena.getText().trim();
 
         if (usuario.isEmpty() || contrasena.isEmpty()) {
             mostrarAlerta("Error", "Usuario y contraseña son obligatorios", Alert.AlertType.ERROR);
             return;
         }
 
-        Usuario usuarioAutenticado = authService.autenticar(usuario, contrasena);
+        try {
+            Usuario usuarioAutenticado = authService.autenticar(usuario, contrasena);
+            App.setUsuarioActual(usuarioAutenticado); // Establecer usuario en la sesión
 
-        if (usuarioAutenticado != null) {
             mostrarAlerta("Éxito", "Bienvenido, " + usuarioAutenticado.getUsername(), Alert.AlertType.INFORMATION);
-            try {
-                if ("admin".equals(usuarioAutenticado.getRol())) {
-                    App.mostrarAdminPanel();
-                } else {
-                    App.mostrarVentaPanel(); // Nuevo método que implementaremos luego
-                }
-            } catch (Exception e) {
-                mostrarAlerta("Error", "No se pudo cargar el panel correspondiente", Alert.AlertType.ERROR);
-                e.printStackTrace();
+
+            if ("admin".equals(usuarioAutenticado.getRol())) {
+                App.mostrarAdminPanel();
+            } else {
+                App.mostrarVentaPanel();
             }
-        } else {
-            mostrarAlerta("Error", "Credenciales incorrectas", Alert.AlertType.ERROR);
+        } catch (Exception e) {
+            mostrarAlerta("Error", "Credenciales incorrectas o error del sistema", Alert.AlertType.ERROR);
+            e.printStackTrace();
         }
     }
 
